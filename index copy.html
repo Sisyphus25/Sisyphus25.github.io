@@ -1,0 +1,389 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>ViSenze Shopping Widget Demo</title>
+    <meta name="description" content="A page to test the ViSenze widgets">
+    <meta name="viewport" content="width=device-width">
+
+    <script src="http://localhost:5500/product-search-widgets/dist/SBI/sbi.staging.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NRZS8DC');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    <!-- Comment if you want to test locally built file -->
+    <!-- <script src="https://cdn.visenze.com/widgets/dist/js/productsearch/staging/sbi.staging.js"></script>
+    <script src="https://cdn.visenze.com/widgets/dist/js/productsearch/staging/sbi_embedded.staging.js"></script>
+    <script src="https://cdn.visenze.com/widgets/dist/js/productsearch/staging/vsr_popup.staging.js"></script>
+    <script src="https://cdn.visenze.com/widgets/dist/js/productsearch/staging/vsr_embedded.staging.js"></script> -->
+
+
+    <style type="text/css" media="screen, print">
+        /** Regular */
+        body { 
+            font-family: 'Lato', sans-serif;
+        }
+
+        .page-brand {
+            background-color: #FFFFFF;
+            color: #212121;
+            padding: 0 11px;
+            font-weight: 900;
+            margin-top: -8px;
+            height: 56px;
+            margin-bottom: -8px;
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .navbar-brand.page-brand {
+            color: #212121;
+        }
+
+        .navbar-brand.page-brand:hover {
+            color: #212121;
+        }
+
+        @media (min-width: 1284px) {
+            .banner {
+                display: flex;
+            } 
+
+            .callout {
+                flex: 1;
+            }
+        }
+
+        @media (min-width: 1030px) and (max-width: 1283.98px) {
+            .banner {
+                height: auto;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 3fr 7fr;
+                position: relative;
+            }
+        }
+
+
+        @media (max-width: 1029.98px) {
+            .banner {
+                height: auto;
+                width: 100%;
+                display: block;
+                position: relative;
+            }
+            
+            .callout {
+                max-width: 100%;
+            }
+            .image {
+                display:none;
+            }
+        }
+
+        .callout {
+            max-height: 100%;
+            background-color: #f95d00;
+            padding: 35px;
+        }
+
+        .im-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 30px 40px 30px;
+            flex-direction: column;
+        }
+
+        h1 {
+            height: 43px;
+            margin: 24px 4px 48px;
+            font-size: 26px;
+            font-weight: 600;
+            text-align: center;
+            color: #000000;
+            width: 100%;
+        }
+
+        .image {
+            max-width: 100%;
+            max-height: 352px;
+            margin-bottom: auto;
+            overflow:hidden;
+        }
+
+        .image > img {
+            margin-top: -20%;
+            max-width: 100%;
+        }
+
+        .item {
+            border-radius: 3px;
+            box-shadow: 0 -1px 3px 0 #dfdfdf;
+            width: 212px;
+            margin: 0 5px 10px 5px;
+            min-width: 212px;
+        }
+
+        .item-container {
+            display: flex;
+            flex-direction: row;
+            max-width: 100%;
+            overflow: scroll;
+        }
+
+        .item-image {
+            height: 306px;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .ps-vsr-widget-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .item-image > img {
+            max-width: 100%;
+            overflow:hidden;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .SHOP-NEW-ARRIVALS-Ex {
+            font-size: 24px;
+            font-size: 24px;
+            font-weight: bold;
+            font-style: normal;
+            line-height: 1.42;
+        }
+        .SHOP-NEW-ARRIVALS-Ex.text-style-1 {
+            font-size: 72px;
+            font-weight: bold;
+            font-style: normal;
+            line-height: 0.89;
+        }
+        .SHOP-NEW-ARRIVALS-Ex.text-style-2 {
+            font-size: 36px;
+            font-weight: 900;
+            font-stretch: normal;
+            font-style: italic;
+            line-height: 1.94;
+            letter-spacing: normal;
+        }
+        .ps-vsr-widget-embedded {
+            min-width: 100%;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .ps-sbi-embedded {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ps-sbi-embedded-title {
+            width: 60%;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sbi-embedded-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 800px;
+            max-width: 100%;
+        }
+        
+        .divider {
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px solid #dfdfdf;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NRZS8DC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <div class="navbar-brand page-brand">Demo</div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link">New in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Sale</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Clothes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Shoes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Bag</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Accessory</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <div class="banner">
+        <div class="callout">
+            <div class="SHOP-NEW-ARRIVALS-Ex">SHOP</div>
+            <div class="SHOP-NEW-ARRIVALS-Ex text-style-1">NEW ARRIVAL</div>
+            <div class="SHOP-NEW-ARRIVALS-Ex text-style-2">Extra 10% off</div>
+        </div>
+        <div class="image">
+            <img src="https://images.pexels.com/photos/833052/pexels-photo-833052.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
+        </div>
+    </div>
+    <div class="im-container">
+        <h1>SBI Icon Trigger Demo</h1>
+        <div>
+          <div>
+              Search By Image
+            <span style = "margin-left:20%" id="sbi-button-select"></span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <h1>VSR Icon Trigger Demo</h1>
+        <div class="item-container">
+            <div class="item">
+                <div class="item-image">
+                    <img src="http://d3vhkxmeglg6u9.cloudfront.net/img/p/1/8/3/0/3/0/183030.jpg">
+                    <div class="ps-vsr-widget-icon" data-pid="POMELO2-AF-SG_021a969f673526700ee84614b0425c547bca8eaf"></div>
+                </div>
+                <div style="color: #4a4a4a; padding: 16px; width: 100%;">
+                    <div style="font-size: 16px">
+                        $29.00
+                    </div>
+                    <div style="font-size: 14px">
+                        Button Up Ribbed Top Cream
+                    </div>
+                    <div>
+                        Demo
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-image">
+                    <img src="http://d3vhkxmeglg6u9.cloudfront.net/img/p/2/2/3/2/6/2/223262.jpg">
+                    <div class="ps-vsr-widget-icon" data-pid="POMELO2-AF-SG_1bf126568d001cdf18eae291465ce567fab7bc99"></div>
+                </div>
+                <div style="color: #4a4a4a; padding: 16px; width: 100%;">
+                    <div style="font-size: 16px">
+                        $59.00
+                    </div>
+                    <div style="font-size: 14px">
+                        Purpose Button Up V Neck Dress White
+                    </div>
+                    <div>
+                        Demo
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-image">
+                    <img src="http://d3vhkxmeglg6u9.cloudfront.net/img/p/2/3/0/7/8/2/230782.jpg">
+                    <div class="ps-vsr-widget-icon" data-pid="POMELO2-AF-SG_0a23a2abd9a08a105c36f262072b9a82c1647d05"></div>
+                </div>
+                <div style="color: #4a4a4a; padding: 16px; width: 100%;">
+                    <div style="font-size: 16px">
+                        $34.00
+                    </div>
+                    <div style="font-size: 14px">
+                        Tied Shoulder Floral Lace Cami White
+                    </div>
+                    <div>
+                        Demo
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-image">
+                    <img src="http://d3vhkxmeglg6u9.cloudfront.net/img/p/2/3/5/4/0/4/235404.jpg">
+                    <div class="ps-vsr-widget-icon" data-pid="POMELO2-AF-SG_1d72f5983f027c004ccd74e66b7287211388c194"></div>
+                </div>
+                <div style="color: #4a4a4a; padding: 16px; width: 100%;">
+                    <div style="font-size: 16px">
+                        $24.00
+                    </div>
+                    <div style="font-size: 14px">
+                        Butterfly Print Square Neck Crop Top White
+                    </div>
+                    <div>
+                        Demo
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-image">
+                    <img src="http://d3vhkxmeglg6u9.cloudfront.net/img/p/2/1/8/3/3/2/218332.jpg">
+                    <div class="ps-vsr-widget-icon" data-pid="POMELO2-AF-SG_1ac65b76cf216311e0075da05cba18452f547c0e"></div>
+                </div>
+                <div style="color: #4a4a4a; padding: 16px; width: 100%;">
+                    <div style="font-size: 16px">
+                        $44.00
+                    </div>
+                    <div style="font-size: 14px">
+                        High Waist Frayed Hem Denim Shorts Blue
+                    </div>
+                    <div>
+                        Demo
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1>VSR In page Demo</h1>
+        <div class="ps-vsr-widget-embedded" data-pid="POMELO2-AF-SG_74789f9e01223159c906698cb2f319938c2446f3"></div>
+        <div class="divider"></div>
+        <h1>SBI In page demo</h1>
+        <div class="sbi-embedded-container">
+            <div class="ps-sbi-embedded" id="sbi-inpage-select"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
